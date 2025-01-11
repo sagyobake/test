@@ -7,7 +7,7 @@ Deno.serve({
 
         const sendToAllClient = value => {
             user_list.forEach(user => {
-                socket.send(`${value}人目のユーザーが参加しました！`);
+                user.send(`${value}人目のユーザーが参加しました！`);
             });
         }
 
