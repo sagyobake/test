@@ -3,6 +3,10 @@ let user_list = [];
 Deno.serve({
     port: 443, //ポート番号を変更
     handler: async (request) => {
+        if (req.headers.get("upgrade") != "websocket") {
+            return new Response(null, { status: 501 });
+        }
+        
         const { socket, response } = Deno.upgradeWebSocket(request);
 
         const sendToAllClient = value => {
