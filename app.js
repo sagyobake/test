@@ -6,7 +6,7 @@ Deno.serve({
         const { socket, response } = Deno.upgradeWebSocket(request);
 
         const sendToAllClient = value => {
-            user_list.forEach(() => {
+            user_list.forEach(user => {
                 socket.send(`${value}人目のユーザーが参加しました！`);
             });
         }
